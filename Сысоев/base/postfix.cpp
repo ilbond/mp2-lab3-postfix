@@ -89,8 +89,8 @@ void TPostfix::CheckInfix() {
 			else throw 1;
 		}
 		if (Word == '.') {
-			if (i == 0) {
-				if ((PrevWord < 40) && (PrevWord > 57))
+			if (i != 0) {
+				if (((PrevWord < 40) && (PrevWord > 57))||(PrevWord=='.'))
 					throw 1;
 			}
 		}

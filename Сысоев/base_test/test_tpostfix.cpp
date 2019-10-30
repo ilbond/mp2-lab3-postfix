@@ -56,6 +56,12 @@ TEST(TPostfix, cant_translate_infix_with_alt_with_point) {
 	p.SetInfix(a);
 	ASSERT_ANY_THROW(p.ToPostfix());
 }
+TEST(TPostfix, cant_translate_infix_with_2_points) {
+	string a = { "5..8+3 " };
+	TPostfix p;
+	p.SetInfix(a);
+	ASSERT_ANY_THROW(p.ToPostfix());
+}
 TEST(TPostfix, cant_translate_infix_with_incorrect_skobkami) {
 	string a = { "a+b+(5+1-(y)" };
 	TPostfix p;
