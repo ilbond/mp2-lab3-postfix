@@ -18,6 +18,34 @@ public:
       throw size;
     pMem = new T[size];
   }
+  int GetTop() {  return top; }
+  int GetSize() { return size; }
+
+  bool empty() {
+	  return top == -1;
+  }
+
+  bool full() {
+	  return top == size-1;
+  }
+
+  void push(const T val) {
+	  if (full() == 1)
+		  throw 1;
+	  pMem[++top] = val;
+  }
+
+   T pop() {
+	  if (empty() == 1)
+		  throw 1;
+	  return  pMem[top--];
+  }
+   T gettop() {
+	   if (empty() == 1)
+		   throw 1;
+	   return  pMem[top];
+   }
+
   ~TStack()
   {
     delete [] pMem;
