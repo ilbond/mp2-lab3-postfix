@@ -220,7 +220,7 @@ double TPostfix::Calculate()
 			case 4: {
 				double a = stack.pop();
 				double b = stack.pop();
-				stack.push(a / b);
+				stack.push(b / a);
 				break;
 			}
 			case 5: {
