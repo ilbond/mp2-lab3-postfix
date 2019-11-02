@@ -163,20 +163,36 @@ string TPostfix::ToPostfix()
 
 double TPostfix::Calculate()
 {
-
+	vector<string> var;
 	double res;
+	int flag = 0;
 	map <string, double> val;
 	string Word, aux;
 	TStack<double> stack(MaxStackSize);
 	for (stringstream is(postfix); is >> Word;) {
 		if ((ar[Word] == 0) && (!Num(Word))) {
-			double a;
-			aux = Word;
-			cout << aux << "=";
-			cin >> a;
-			cout << endl;
-			val.insert(pair<string, double>(aux, a));
-			aux.clear();
+			vector <string>::iterator it = var.begin();
+			while (it != var.end())
+			{
+
+				if (*it == Word) {
+					flag++;
+					break;
+				}
+				it++;
+			}
+			if (var.empty()||it == var.end())
+				var.push_back(Word);
+			if (flag == 0) {
+				double a;
+				aux = Word;
+				cout << aux << "=";
+				cin >> a;
+				cout << endl;
+				val.insert(pair<string, double>(aux, a));
+				aux.clear();
+			}
+			flag = 0;
 		}
 	}
 	for (stringstream is(postfix); is >> Word;) {

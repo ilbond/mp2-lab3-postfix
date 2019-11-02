@@ -17,12 +17,10 @@ TEST(TStack, can_check_empty) {
 	ASSERT_EQ(st.empty(),1);
 }
 TEST(TStack, can_check_full) {
-	TStack<int> st(2);
-	for (int i = 0; i < MaxStackSize; i++) {
+	TStack<int>st(2);
+	for (int i = 0; i < st.GetSize(); i++)
 		st.push(0);
-	}
-
-	ASSERT_EQ(st.full(),1);
+	EXPECT_EQ(1, st.full());
 }
 TEST(TStack, throws_when_get_top_element_in_empty) {
 	TStack<int> st(2);
